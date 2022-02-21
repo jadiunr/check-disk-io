@@ -2,53 +2,39 @@
 ![Go Test](https://github.com/jadiunr/check-disk-io/workflows/Go%20Test/badge.svg)
 ![goreleaser](https://github.com/jadiunr/check-disk-io/workflows/goreleaser/badge.svg)
 
-# Check Plugin Template
-
-## Overview
-check-plugin-template is a template repository which wraps the [Sensu Plugin SDK][2].
-To use this project as a template, click the "Use this template" button from the main project page.
-Once the repository is created from this template, you can use the [Sensu Plugin Tool][9] to
-populate the templated fields with the proper values.
-
-## Functionality
-
-After successfully creating a project from this template, update the `Config` struct with any
-configuration options for the plugin, map those values as plugin options in the variable `options`,
-and customize the `checkArgs` and `executeCheck` functions in [main.go][7].
-
-When writing or updating a plugin's README from this template, review the Sensu Community
-[plugin README style guide][3] for content suggestions and guidance. Remove everything
-prior to `# Sensu disk IO check` from the generated README file, and add additional context about the
-plugin per the style guide.
-
-## Releases with Github Actions
-
-To release a version of your project, simply tag the target sha with a semver release without a `v`
-prefix (ex. `1.0.0`). This will trigger the [GitHub action][5] workflow to [build and release][4]
-the plugin with goreleaser. Register the asset with [Bonsai][8] to share it with the community!
-
-***
-
 # Sensu disk IO check
 
 ## Table of Contents
 - [Overview](#overview)
-- [Files](#files)
 - [Usage examples](#usage-examples)
 - [Configuration](#configuration)
   - [Asset registration](#asset-registration)
   - [Check definition](#check-definition)
 - [Installation from source](#installation-from-source)
-- [Additional notes](#additional-notes)
 - [Contributing](#contributing)
 
 ## Overview
 
-The Sensu disk IO check is a [Sensu Check][6] that ...
-
-## Files
+The Sensu disk IO check is a [Sensu Check][6] that reports on disk IO statistics.
 
 ## Usage examples
+
+```
+Check disk IO and provide metrics
+
+Usage:
+  check-disk-io [flags]
+  check-disk-io [command]
+
+Available Commands:
+  help        Help about any command
+  version     Print the version number of this plugin
+
+Flags:
+  -h, --help   help for check-disk-io
+
+Use "check-disk-io [command] --help" for more information about a command.
+```
 
 ## Configuration
 
@@ -62,7 +48,7 @@ following command to add the asset:
 sensuctl asset add jadiunr/check-disk-io
 ```
 
-If you're using an earlier version of sensuctl, you can find the asset on the [Bonsai Asset Index][https://bonsai.sensu.io/assets/jadiunr/check-disk-io].
+If you're using an earlier version of sensuctl, you can find the asset on the [Bonsai Asset Index](https://bonsai.sensu.io/assets/jadiunr/check-disk-io).
 
 ### Check definition
 
@@ -74,7 +60,7 @@ metadata:
   name: check-disk-io
   namespace: default
 spec:
-  command: check-disk-io --example example_arg
+  command: check-disk-io
   subscriptions:
   - system
   runtime_assets:
@@ -92,8 +78,6 @@ From the local path of the check-disk-io repository:
 ```
 go build
 ```
-
-## Additional notes
 
 ## Contributing
 
